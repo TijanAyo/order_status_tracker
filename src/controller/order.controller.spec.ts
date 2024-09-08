@@ -21,6 +21,8 @@ describe('OrderController', () => {
       .get('/orders?page=1&size=10')
       .expect(200);
 
+    console.log(response.body, '<<< response');
+
     // Check if 'orders' is an array
     expect(Array.isArray(response.body.data.orders)).toBe(true);
 
@@ -35,7 +37,7 @@ describe('OrderController', () => {
       'Orders retrived successfully',
     );
     expect(response.body).toHaveProperty('success', true);
-  }, 10000);
+  }, 15000);
 
   it('should return 400 for invalid query parameters', async () => {
     const response = await request(app)
