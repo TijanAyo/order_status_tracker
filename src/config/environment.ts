@@ -1,7 +1,7 @@
-import * as dotenv from "dotenv";
+import * as dotenv from 'dotenv';
 dotenv.config();
 
-import { z } from "zod";
+import { z } from 'zod';
 
 const environmentSchema = z.object({
   APP_NAME: z.string(),

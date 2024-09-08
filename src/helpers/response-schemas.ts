@@ -1,9 +1,9 @@
-import { z } from "zod";
+import { z } from 'zod';
 
 const orderSchema = z.object({
   id: z.string(),
   customer_name: z.string(),
-  status: z.enum(["Pending", "Cancelled", "Completed"]),
+  status: z.enum(['Pending', 'Cancelled', 'Completed']),
   created_at: z.string().datetime(),
   updated_at: z.string().datetime(),
 });

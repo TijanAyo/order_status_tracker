@@ -1,6 +1,6 @@
-import { injectable } from "tsyringe";
-import { prisma } from "../config/prisma";
-import { HttpException, ErrorMessage } from "../helpers";
+import { injectable } from 'tsyringe';
+import { prisma } from '../config/prisma';
+import { HttpException, ErrorMessage } from '../helpers';
 
 @injectable()
 export class OrderRepository {
@@ -31,12 +31,12 @@ export class OrderRepository {
       console.error(
         `Error at fetchOrders: Unable to list orders`,
         e.message,
-        e.stack
+        e.stack,
       );
       throw new HttpException(
-        "An unexpected error has occurred",
+        'An unexpected error has occurred',
         500,
-        ErrorMessage.INTERNAL_SERVER_ERROR
+        ErrorMessage.INTERNAL_SERVER_ERROR,
       );
     }
   }

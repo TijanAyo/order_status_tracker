@@ -1,21 +1,21 @@
-import { injectable } from "tsyringe";
-import { OrderService } from "../service";
-import { Request, Response } from "express";
-import { ErrorHandler, ErrorMessage } from "../helpers";
+import { injectable } from 'tsyringe';
+import { OrderService } from '../service';
+import { Request, Response } from 'express';
+import { ErrorHandler, ErrorMessage } from '../helpers';
 
 @injectable()
 export class OrderController {
   constructor(
     private readonly orderService: OrderService,
-    private readonly errorService: ErrorHandler
+    private readonly errorService: ErrorHandler,
   ) {}
 
   async getOrderList(req: Request, res: Response): Promise<Response> {
-    const allowedQueries = ["page", "size"];
+    const allowedQueries = ['page', 'size'];
     const queryKeys = Object.keys(req.query);
 
     const invalidQueries = queryKeys.filter(
-      (key) => !allowedQueries.includes(key)
+      (key) => !allowedQueries.includes(key),
     );
 
     if (invalidQueries.length > 0) {
@@ -31,7 +31,7 @@ export class OrderController {
 
       const response = await this.orderService.getOrderList(
         page as string,
-        size as string
+        size as string,
       );
       return res.status(200).json(response);
     } catch (e) {

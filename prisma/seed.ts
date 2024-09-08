@@ -1,5 +1,5 @@
-import { PrismaClient } from "@prisma/client";
-import { faker } from "@faker-js/faker";
+import { PrismaClient } from '@prisma/client';
+import { faker } from '@faker-js/faker';
 
 const prisma = new PrismaClient();
 
@@ -8,7 +8,7 @@ async function seed() {
     // Generate dummy data
     const orders = Array.from({ length: 100 }).map(() => ({
       customer_name: faker.person.fullName(),
-      status: faker.helpers.arrayElement(["Pending", "Completed", "Cancelled"]),
+      status: faker.helpers.arrayElement(['Pending', 'Completed', 'Cancelled']),
       created_at: faker.date.past(),
       updated_at: faker.date.past(),
     }));
@@ -20,7 +20,7 @@ async function seed() {
       });
     }
 
-    console.log("Seeding complete.");
+    console.log('Seeding complete.');
   } catch (e) {
     console.error(`Error while seeding`, e.message, e.stack);
   } finally {

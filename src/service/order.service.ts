@@ -1,8 +1,8 @@
-import { injectable } from "tsyringe";
-import { OrderRepository } from "../repository";
-import { HttpException, ErrorMessage, AppResponse } from "../helpers";
-import { getOrderListSchema } from "../helpers";
-import { z } from "zod";
+import { injectable } from 'tsyringe';
+import { OrderRepository } from '../repository';
+import { HttpException, ErrorMessage, AppResponse } from '../helpers';
+import { getOrderListSchema } from '../helpers';
+import { z } from 'zod';
 
 // Infer getOrderList type from response-schema
 type OrderResponseType = z.infer<typeof getOrderListSchema>;
@@ -16,7 +16,7 @@ export class OrderService {
       throw new HttpException(
         `Invalid page value`,
         400,
-        ErrorMessage.BAD_REQUEST
+        ErrorMessage.BAD_REQUEST,
       );
     }
 
@@ -24,14 +24,14 @@ export class OrderService {
       throw new HttpException(
         `Invalid page-size value`,
         400,
-        ErrorMessage.BAD_REQUEST
+        ErrorMessage.BAD_REQUEST,
       );
     }
 
     try {
       const { orders, metadata } = await this.orderRepository.fetchOrders(
         page,
-        size
+        size,
       );
 
       const response = {
@@ -39,17 +39,17 @@ export class OrderService {
         metadata,
       };
 
-      return AppResponse.Ok(response, "Orders retrived successfully");
+      return AppResponse.Ok(response, 'Orders retrived successfully');
     } catch (e) {
       console.error(
         `Error at getOrderList: Unable to fetch orderlist`,
         e.message,
-        e.stack
+        e.stack,
       );
       throw new HttpException(
-        "An unexpected error has occurred",
+        'An unexpected error has occurred',
         500,
-        ErrorMessage.INTERNAL_SERVER_ERROR
+        ErrorMessage.INTERNAL_SERVER_ERROR,
       );
     }
   }

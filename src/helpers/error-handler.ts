@@ -1,6 +1,6 @@
-import { Response } from "express";
-import { injectable } from "tsyringe";
-import { ErrorMessage, HttpException } from "./custom-error";
+import { Response } from 'express';
+import { injectable } from 'tsyringe';
+import { ErrorMessage, HttpException } from './custom-error';
 
 @injectable()
 export class ErrorHandler {
@@ -15,7 +15,7 @@ export class ErrorHandler {
     return res.status(500).json({
       error: ErrorMessage.INTERNAL_SERVER_ERROR,
       message:
-        "An error occurred while processing your request. Please try again later.",
+        'An error occurred while processing your request. Please try again later.',
       success: false,
     });
   }
