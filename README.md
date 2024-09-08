@@ -42,6 +42,12 @@ Install dependencies
   yarn install
 ```
 
+Seed DB to populate dummy data
+
+```bash
+  npx prisma db seed
+```
+
 Start the server in development mode
 
 ```bash
